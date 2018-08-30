@@ -1,0 +1,28 @@
+{
+  "name": "drones",
+  "version": "1.0.0",
+  "description": "A technical exam from a Job search!",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/test.js",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "dev-debug": "nodemon --inspect=0.0.0.0:9229 app.js",
+    "dev-docker": "docker build -t drones . && docker run -p 3000:3000 drones"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanmav/drones.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juanmav/drones/issues"
+  },
+  "homepage": "https://github.com/juanmav/drones#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "nodemon": "^1.18.4",
+    "tape": "^4.9.1"
+  }
+}
