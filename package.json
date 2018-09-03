@@ -7,7 +7,7 @@
     "test": "node ./test/test.js",
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "dev-debug": "nodemon --inspect=0.0.0.0:9229 app.js",
+    "send": "node ./sendmessage.js",
     "dev-docker": "docker build -t drones . && docker run -p 3000:3000 drones"
   },
   "repository": {
