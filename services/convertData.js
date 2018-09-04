@@ -5,6 +5,8 @@
  * In the future it is posible to change de implementation
  * maybe the data could be sent in HEX or another format.
  *
+ * @param {String} string the format is id,latitude,longitude
+ *
  * */
 function rawToJSON(string){
     let values = string.split(',');
