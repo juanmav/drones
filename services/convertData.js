@@ -1,7 +1,9 @@
 /**
  * Suppose that the info is sent in this format.
- *
  * id,latitude,longitude
+ *
+ * In the future it is posible to change de implementation
+ * maybe the data could be sent in HEX or another format.
  *
  * */
 function rawToJSON(string){
@@ -14,7 +16,7 @@ function rawToJSON(string){
         let [ id, latitude, longitude ] = values;
 
         return {
-            id, latitude, longitude
+            id, latitude: parseFloat(latitude), longitude: parseFloat(longitude)
         }
     }
 }

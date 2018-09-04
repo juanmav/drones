@@ -4,16 +4,25 @@ class Drone {
         this.latitude = drone.latitude;
         this.longitude = drone.longitude;
         this.lastUpdate = new Date().getTime();
+        this.stationary = false;
+        this.delta = 0;
     }
 
     update(drone){
-        // TODO calculate change
-        this.id = drone.id;
+
+        let updateTime = new Date().getTime();
+        this.delta = this.getDistance(drone, this);
+        this.deltaTime = updateTime - this.lastUpdate;
+
+
+        // You should visually highlight the drones that have not been moving for more than 10 seconds
+        // (the drone sent updates, but didn't move more that 1 meter).
+        this.stationary = this.deltaTime >= 10000 && this.delta < 1;
+
         this.latitude = drone.latitude;
         this.longitude = drone.longitude;
-        this.lastUpdate = new Date().getTime();
+        this.lastUpdate = updateTime;
     }
-
 
     // https://stackoverflow.com/a/27943/1207842
     getDistance({ latitude: lat1, longitude: lon1},{ latitude: lat2, longitude: lon2}) {

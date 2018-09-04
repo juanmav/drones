@@ -1,10 +1,9 @@
 const test = require('tape');
 const Drone = require('../models/Drone');
-const { generateRandomCoordinates } = require('./helpers.js');
+const { generateRandomCoordinates } = require('../helpers/helpers.js');
 const { rawToJSON } = require('../services/convertData');
 
-
-test.skip('Generate Random coordinates TEST', function (t) {
+test('Generate Random coordinates TEST', function (t) {
     let coordinates = generateRandomCoordinates();
     console.log(coordinates);
     t.ok(coordinates);
@@ -37,6 +36,7 @@ test.skip('Test convert "Raw Data" to "Raw JSON data" with wrong data', function
     let string = "1-15.1630509-118.20511";
     try {
         let json = rawToJSON(string);
+        console.log(json); // never reach here.
         t.fail();
     } catch (e) {
         console.log(e.message);

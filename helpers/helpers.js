@@ -3,12 +3,12 @@ function getRandomInRange(from, to, fixed) {
     return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
 }
 
-function generateRandomCoordinates(){
+function generateRandomCoordinates(minLat = -90, maxLat = 90, minLong = -180, maxLong = 180){
     return {
         // N/S
-        latitude: getRandomInRange(-90, 90, 5),
+        latitude: getRandomInRange(minLat, maxLat, 5),
         // W/E
-        longitude: getRandomInRange(-180, 180, 5)
+        longitude: getRandomInRange(minLong, maxLong, 5)
     }
 }
 

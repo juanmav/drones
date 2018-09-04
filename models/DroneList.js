@@ -24,7 +24,7 @@ function addOrUpdateDrone(drone) {
 }
 
 function getDrone(id) {
-    return drones.find( d => d.id === drone.id);
+    return drones.find( d => d.id === id);
 }
 
 function getList(){
