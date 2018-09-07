@@ -1,5 +1,5 @@
 class Drone {
-    constructor(drone){
+    constructor(drone) {
         this.id = drone.id;
         this.latitude = drone.latitude;
         this.longitude = drone.longitude;
@@ -7,17 +7,26 @@ class Drone {
         this.stationary = false;
         this.speed = 0;
         this.delta = 0;
+        this.history = [{...drone, date: this.lastUpdate}];
     }
 
-    update(drone){
 
+    update(drone){
         let updateTime = new Date().getTime();
-        this.delta = this.getDistance(drone, this);
-        this.deltaTime = updateTime - this.lastUpdate;
+        this.history = [...this.history, {...drone, date: updateTime}];
+
+        // Clean updates older than 10seconds.
+        // The last 10 seconds history.
+        this.history = this.history.filter( h => (h.date - updateTime) < 10000 );
+        let {0: first, [this.history.length-1]: last} = this.history;
+        this.tenSecondsDelta = this.getDistance(first, last);
+
         // You should visually highlight the drones that have not been moving for more than 10 seconds
         // (the drone sent updates, but didn't move more that 1 meter).
-        // TODO improve this.
-        this.stationary = this.deltaTime >= 10000 && this.delta < 1;
+        this.stationary = this.tenSecondsDelta < 1;
+        // Speed Calculation.
+        this.delta = this.getDistance(drone, this);
+        this.deltaTime = updateTime - this.lastUpdate;
         this.speed = this.delta / this.deltaTime;
         this.latitude = drone.latitude;
         this.longitude = drone.longitude;
