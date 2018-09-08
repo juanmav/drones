@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/juanmav/drones#readme",
   "dependencies": {
-    "dotenv": "^6.0.0"
+    "dotenv": "^6.0.0",
+    "websocket": "^1.0.26"
   },
   "devDependencies": {
     "tape": "^4.9.1",

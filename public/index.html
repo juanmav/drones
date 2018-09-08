@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Drones!</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let socket;
+    const onMessage = (event) => {
+        let drones = JSON.parse(event.data);
+        //console.log(drones);
+        DronesToTable(drones);
+    };
+
+    const onOpen = (event) => {
+        console.log('Connected');
+    };
+
+    const onClose = (event) => {
+        if (socket) {
+            console.error('Disconnected.');
+        }
+        socket = new WebSocket('ws://localhost:8080', 'echo-protocol');
+        socket.addEventListener('open', onOpen);
+        socket.addEventListener('message', onMessage);
+        socket.addEventListener('close', onClose);
+    };
+
+    onClose();
+
+    function DronesToTable(drones) {
+
+
+        let rows = drones.map( d => {
+            let color = d.stationary ? 'red' : 'white';
+            return(`<tr style="background-color: ${color}">
+                <td>${d.id}</td>
+                <td>${d.latitude}</td>
+                <td>${d.longitude}</td>
+                <td>${d.lastUpdate}</td>
+                <td>${d.speed}</td>
+                <td>${d.stationary}</td>
+            </tr>`);
+        });
+
+        let stringRows = rows.join('\n');
+
+        let table = `<table id="table">
+                        <tr>
+                            <th>Id</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                            <th>Last Update</th>
+                            <th>Speed</th>
+                            <th>Stationary</th>
+                        </tr>
+                        ${stringRows}
+                    </table>`;
+
+        console.log(table);
+
+        let root = document.getElementById('root');
+
+        root.innerHTML = table;
+    }
+
+</script>
+
+<div id="root"></div>
+
+</body>
+</html>

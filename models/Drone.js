@@ -5,9 +5,11 @@ class Drone {
         this.longitude = drone.longitude;
         this.lastUpdate = new Date().getTime();
         this.stationary = false;
-        this.speed = 0;
+        this.deltaTime = 0;
         this.delta = 0;
+        this.speed = 0;
         this.history = [{...drone, date: this.lastUpdate}];
+
     }
 
 
@@ -51,6 +53,12 @@ class Drone {
 
     deg2rad(deg) {
         return deg * (Math.PI/180)
+    }
+
+    toJSON(){
+        let locale = Object.assign({}, this);
+        delete locale.history;
+        return locale
     }
 
 }

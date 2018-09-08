@@ -12,6 +12,7 @@
 const Drone = require('./Drone');
 
 let drones = [];
+let observers = [];
 
 /**
  * addOrUpdateDrone recieves a rawDrone and manages it, if the drone
@@ -28,6 +29,7 @@ function addOrUpdateDrone(rawDrone) {
         instance = new Drone(rawDrone);
         drones = [...drones, instance];
     }
+    emit();
     return instance;
 }
 
@@ -43,8 +45,23 @@ function getDrone(id) {
 function getList(){
     return drones;
 }
+
+function subscribe(cb){
+    observers = [...observers, cb];
+}
+
+function unSubscribe(discart) {
+    observers = observers.filter( cb => cb !== discart);
+}
+
+function emit(){
+    observers.forEach( cb => cb(drones));
+}
+
 module.exports = {
     addOrUpdateDrone,
     getDrone,
     getList,
+    subscribe,
+    unSubscribe
 };
