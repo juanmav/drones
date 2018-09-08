@@ -35,7 +35,6 @@ You can store state as an in-memory object. Integrating with databases such as R
 Don't spend too much time on the front-end part of the assignment (a simple table is enough). You definitely don't need to create a real-time maps component with something like Google Maps. We would rather have you focusing on the core backend problems
 
 
-
 ## Development mod local
 
 > npm install
@@ -45,9 +44,19 @@ Don't spend too much time on the front-end part of the assignment (a simple tabl
 
 > npm run dev-docker
 
+## To build and custom run docker.
+
+> docker build -t drones . 
+> docker run -p 3000:3000/udp -p 8080:8080 drones
+
 ## FAQ
 
 Why is .env upload?
 
 For now it is easier to work with the .env file in the repo, this project is only for exam purposes. 
 In production project .env should not exits in the repository.
+
+Why udp?
+
+UDP is a light protocol is not connection-oriented as TCP so it is a good choice for communicate
+little packets maintaining the cost low.

@@ -27,7 +27,7 @@ wsServer.on('request', function(request) {
         const connection = request.accept('echo-protocol', request.origin);
         console.log((new Date()) + ' Connection accepted.');
 
-        //connection.sendUTF(JSON.stringify(DroneList.getList()));
+        connection.sendUTF(JSON.stringify(DroneList.getList()));
 
         let fn = function (drones) {
             connection.sendUTF(JSON.stringify(drones));

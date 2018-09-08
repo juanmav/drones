@@ -39,11 +39,12 @@
 
         let rows = drones.map( d => {
             let color = d.stationary ? 'red' : 'white';
+            let dateString = new Date(d.lastUpdate).toString();
             return(`<tr style="background-color: ${color}">
                 <td>${d.id}</td>
                 <td>${d.latitude}</td>
                 <td>${d.longitude}</td>
-                <td>${d.lastUpdate}</td>
+                <td>${dateString}</td>
                 <td>${d.speed}</td>
                 <td>${d.stationary}</td>
             </tr>`);

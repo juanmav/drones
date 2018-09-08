@@ -8,7 +8,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "send": "node ./sendmessage.js",
-    "dev-docker": "docker build -t drones . && docker run -p 3000:3000 drones"
+    "dev-docker": "docker build -t drones . && docker run -p 3000:3000/udp -p 8080:8080 drones"
   },
   "repository": {
     "type": "git",
