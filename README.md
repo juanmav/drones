@@ -40,6 +40,9 @@ Don't spend too much time on the front-end part of the assignment (a simple tabl
 > npm install
 > npm run dev
 
+The drones should send UDP messages to port `3000` the format is "id,latitute,longitude"
+The webpage to watch the drone list is `8080`.
+
 ## Development mod Docker
 
 > npm run dev-docker
