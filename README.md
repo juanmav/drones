@@ -58,12 +58,20 @@ The webpage to watch the drone list is `8080`.
 
 ## FAQ
 
-Why is .env upload?
+*Why is .env upload?*
 
 For now it is easier to work with the .env file in the repo, this project is only for exam purposes. 
 In production project .env should not exits in the repository.
 
-Why udp?
+*Why udp?*
 
 UDP is a light protocol is not connection-oriented as TCP so it is a good choice for communicate
 little packets maintaining the cost low.
+
+*Which Linter?*
+
+I chose SonarLint because it has a plugin for every popular IDE. (https://www.sonarlint.org/)
+
+*Unit test*
+
+TapeJs, it is very simple to use. (https://github.com/substack/tape).
