@@ -1,7 +1,7 @@
 const test = require('tape');
 const Drone = require('../models/Drone');
 
-test.skip('Drone movement', function (t) {
+test('Drone movement', function (t) {
    let raw = { id: '1', latitude: 79.85164, longitude: 17.94686 };
    let drone = new Drone(raw);
    t.ok(drone.delta === 0);
@@ -16,7 +16,7 @@ test.skip('Drone movement', function (t) {
     }, 1000)
 });
 
-test.skip('Severals updates in close time', function (t) {
+test('Severals updates in close time', function (t) {
     let raw = { id: '1', latitude: 79.851640, longitude: 17.94686 };
     let drone = new Drone(raw);
 

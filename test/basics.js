@@ -14,7 +14,7 @@ test('Generate Random coordinates TEST', function (t) {
     t.end();
 });
 
-test.skip('Test convert "Raw Data" to "Raw JSON data"', function (t) {
+test('Test convert "Raw Data" to "Raw JSON data"', function (t) {
     let string = "1,15.16305,-118.20511";
 
     try {
@@ -32,7 +32,7 @@ test.skip('Test convert "Raw Data" to "Raw JSON data"', function (t) {
     }
 });
 
-test.skip('Test convert "Raw Data" to "Raw JSON data" with wrong data', function (t) {
+test('Test convert "Raw Data" to "Raw JSON data" with wrong data', function (t) {
     let string = "1-15.1630509-118.20511";
     try {
         let json = rawToJSON(string);

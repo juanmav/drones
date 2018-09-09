@@ -3,7 +3,7 @@ const DroneList = require('../models/DroneList');
 const Drone = require('../models/Drone');
 const { rawToJSON } = require('../services/convertData');
 
-test.skip('Test list', function (t) {
+test('Test list', function (t) {
     const list = DroneList.getList();
     t.ok(list.length === 0);
     t.ok(Array.isArray(list));

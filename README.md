@@ -49,6 +49,10 @@ Don't spend too much time on the front-end part of the assignment (a simple tabl
 > docker build -t drones . 
 > docker run -p 3000:3000/udp -p 8080:8080 drones
 
+## Run a drone emulating messages
+
+> npm run send
+
 ## FAQ
 
 Why is .env upload?

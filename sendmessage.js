@@ -1,16 +1,19 @@
 const udp = require('dgram');
 const sendmessage = udp.createSocket('udp4');
 const dotenv = require('dotenv');
+const { generateRandomCoordinates }= require('./helpers/helpers');
+
 dotenv.config();
 
 let flipflop = false;
 
 let interval = setInterval(function () {
 
-    const drone1 = "1,15.16305,-118.20511";
-    const drone2 = "2,15.16305,-118.20511";
+    const coordinates = generateRandomCoordinates(-34, -35, -58, -59);
+    const stringCoordinates = `${coordinates.latitude},${coordinates.longitude}`;
 
-    const toSend = flipflop ? drone1 : drone2;
+    // Drones 1 moves, drone2 doesnt.
+    const toSend = flipflop ? `1,${stringCoordinates}` : "2,15.16305,-118.20511";
     flipflop = !flipflop;
 
     sendmessage.send(Buffer.from(toSend), parseInt(process.env.UDP_PORT),'localhost', function(error){
