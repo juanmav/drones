@@ -1,5 +1,7 @@
+const groupList = require('./GroupList');
+
 class Drone {
-    constructor(drone) {
+    constructor(drone, groupId = 'NO GROUP ID') {
         this.id = drone.id;
         this.latitude = drone.latitude;
         this.longitude = drone.longitude;
@@ -9,7 +11,8 @@ class Drone {
         this.delta = 0;
         this.speed = 0;
         this.history = [{...drone, date: this.lastUpdate}];
-
+        groupList.addGroup(groupId);
+        this.groupId = groupId;
     }
 
 

@@ -4,7 +4,7 @@
   "description": "A technical exam from a Job search!",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test/drone.js",
+    "test": "node ./test/groupList.js",
     "start": "node app.js",
     "dev": "nodemon app.js",
     "send": "node ./sendmessage.js",
